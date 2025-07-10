@@ -16,8 +16,8 @@
             const scanned = result.getText();
             resultElement.innerText = scanned;
 
-            // Optional redirect back to Power Apps
-             window.location.href = `https://apps.powerapps.com/play/e/default-0f591d11-c6ce-4302-8246-bc0e5edcf762/a/1665358b-9107-4f73-8038-1a95e97df773?tenantId=0f591d11-c6ce-4302-8246-bc0e5edcf762&scanned=${encodeURIComponent(scanned)}`;
+            // ✅ Send to Power Apps instead of redirecting
+            window.parent.postMessage({ barcode: scanned }, "*");
           }
         });
       };
@@ -29,3 +29,4 @@
     <p>Scanned: <span id="result"></span></p>
   </body>
 </html>
+
